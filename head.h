@@ -5,4 +5,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int strgs_count(char *str);
+
 #endif
