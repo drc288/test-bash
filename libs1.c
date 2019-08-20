@@ -7,7 +7,7 @@
  * Return: the numbers of strings separate with " "
  */
 
-int strgs_count(char *str)
+int new_argc(char *str)
 {
 	char *buf;
 	int i = 0;

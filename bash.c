@@ -7,7 +7,7 @@ int main(void)
 /*	char *chainArray; */
 /*	char *newenviron[] = { NULL }; */
 /*	char *comm; */
-	int characters, count;
+	int characters;
 	size_t buf_size = 1024;
 /*	char *argv[] = {"/bin/ls", "-l", "/usr/", NULL}; */
 
@@ -21,8 +21,7 @@ int main(void)
 		}
 		else
 		{
-			count = strgs_count(buf);
-			printf("%d\n", count);
+			printf("%s\n", buf);
 
 			/*
 			chainArray = strtok(buf, " ");

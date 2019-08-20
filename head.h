@@ -5,6 +5,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int strgs_count(char *str);
+int new_argc(char *str);
 
 #endif
