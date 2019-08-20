@@ -23,7 +23,7 @@ int main(void)
 		{
 
 			argc = new_argc(buf);
-			printf("%s\n", buf);
+			printf("%s", buf);
 			printf("%i\n", argc);
 			/*
 			chainArray = strtok(buf, " ");
