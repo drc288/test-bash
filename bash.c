@@ -4,6 +4,7 @@
 int main(void)
 {
 	char *buf = NULL;
+	char **argv;
 /*	char *chainArray; */
 /*	char *newenviron[] = { NULL }; */
 /*	char *comm; */
@@ -25,6 +26,8 @@ int main(void)
 			argc = new_argc(buf);
 			printf("%s", buf);
 			printf("%i\n", argc);
+			argv = new_argv(argc, buf);
+			printf("%s\n", argv[1]);
 			/*
 			chainArray = strtok(buf, " ");
 			i = 0;

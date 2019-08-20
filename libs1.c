@@ -66,3 +66,43 @@ int new_argc(char *str)
 	free(buf);
 	return (i);
 }
+
+/**
+ * new_argv - split a string and create an array of strs
+ * @argc: counter of strs given
+ * @str: string to be split
+ *
+ * Return: Pointer to an array of strs
+ */
+char **new_argv(int argc, char *str)
+{
+	char *temp;
+	char **array;
+	int length, i;
+
+	array = malloc(sizeof(char *) * argc);
+	if (array == NULL)
+		perror("ERROR");
+
+	length = _strlen(str);
+	temp = malloc(sizeof(char) * (length + 1));
+	if (temp == NULL)
+		perror("ERROR");
+
+	temp = _strcpy(temp, str);
+	temp = strtok(temp, " ");
+	if (temp == NULL)
+		perror("ERROR");
+
+	i = 0;
+	while (temp != NULL)
+	{
+		length = _strlen(temp);
+		array[i] = malloc(sizeof(char) * (length + 1));
+		array[i] = _strcpy(array[i], temp);
+		i++;
+		temp = strtok(NULL, " ");
+	}
+	free(temp);
+	return (array);
+}
