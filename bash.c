@@ -33,7 +33,7 @@ int main(void)
 					perror("ERROR");
 			}
 		}
-		free(argv);
+		free_grid(argv, argc);
 	}
 	free(buf);
 	return (0);
