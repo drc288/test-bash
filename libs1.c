@@ -135,3 +135,29 @@ char **new_argv(int argc, char *str)
 	free(temp);
 	return (array);
 }
+
+/**
+ * first_string - remove the character '\n' in str
+ * @str: string to edit
+ *
+ * Return: the string
+ */
+
+char *rm_enter(char *str)
+{
+	char *buf;
+	int sLen, i;
+
+	sLen = _strlen(str);
+	buf = (char *)malloc(sLen * sizeof(char));
+	if (buf == NULL)
+	{
+		perror("ERROR");
+	}
+
+	for (i = 0; str[i] != 0; i++)
+		buf[i] = str[i];
+
+	buf[i - 1] = '\0';
+	return (buf);
+}
