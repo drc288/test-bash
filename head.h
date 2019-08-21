@@ -9,5 +9,6 @@ int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 int new_argc(char *str);
 char **new_argv(int, char *);
+char *rm_enter(char *str);
 
 #endif

@@ -17,14 +17,14 @@ int main(void)
 		{
 			perror("ERROR");
 		}
-		else
+	else
 		{
 
 			argc = new_argc(buf);
+			buf = rm_enter(buf);
 			argv = new_argv(argc, buf);
 
-/*			if (argc == 1) */
-/*				buf = first_string(buf); */
+			printf("%s\n", buf);
 
 			pid = fork();
 			if (pid == 0)
