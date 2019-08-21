@@ -4,13 +4,10 @@
 int main(void)
 {
 	char *buf = NULL;
+	pid_t pid;
 	char **argv;
-/*	char *chainArray; */
-/*	char *newenviron[] = { NULL }; */
-/*	char *comm; */
 	int characters, argc;
 	size_t buf_size = 1024;
-/*	char *argv[] = {"/bin/ls", "-l", "/usr/", NULL}; */
 
 	while (1)
 	{
@@ -24,36 +21,19 @@ int main(void)
 		{
 
 			argc = new_argc(buf);
-			printf("%s", buf);
-			printf("%i\n", argc);
 			argv = new_argv(argc, buf);
-			printf("%s\n", argv[1]);
-			/*
-			chainArray = strtok(buf, " ");
-			i = 0;
 
-			while ((*chainArray) != NULL)
+/*			if (argc == 1) */
+/*				buf = first_string(buf); */
+
+			pid = fork();
+			if (pid == 0)
 			{
-				if (i == 0)
-				{
-					comm = chainArray; 
-					chainArray = strtok(NULL, " ");
-					i++;
-				}
-
-				chainArray = strtok(NULL, " ");
+				if (execve(argv[0], argv, NULL) == -1)
+					perror("ERROR");
 			}
-			
-			if (execve(comm, &chainArray, NULL) == -1)
-			{
-				perror("ERROR");
-			}
-			
-
-			execve(argv[0], argv, NULL);
-			perror("execve");
-			*/
 		}
+		free(argv);
 	}
 	free(buf);
 	return (0);

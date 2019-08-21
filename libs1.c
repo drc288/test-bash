@@ -82,17 +82,27 @@ char **new_argv(int argc, char *str)
 
 	array = malloc(sizeof(char *) * argc);
 	if (array == NULL)
+	{
+		free(array);
 		perror("ERROR");
+	}
 
 	length = _strlen(str);
 	temp = malloc(sizeof(char) * (length + 1));
 	if (temp == NULL)
+	{
+		free(temp);
 		perror("ERROR");
+	}
 
 	temp = _strcpy(temp, str);
 	temp = strtok(temp, " ");
 	if (temp == NULL)
+	{
+		free(temp);
+		free(array);
 		perror("ERROR");
+	}
 
 	i = 0;
 	while (temp != NULL)
