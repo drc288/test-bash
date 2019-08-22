@@ -9,7 +9,7 @@
 
 int new_argc(char *str)
 {
-	char *buf, token;
+	char *buf, *token;
 	int i = 0, ch;
 
 	ch = _strlen(str);
@@ -20,10 +20,9 @@ int new_argc(char *str)
 	buf = _strcpy(buf, str);
 	token = strtok(buf, DELIM);
 
-	while (buf != NULL)
+	while (token = strtok(NULL, DELIM))
 	{
 		i++;
-		buf = strtok(NULL, DELIM);
 	}
 	free(buf);
 	return (i);
@@ -60,7 +59,7 @@ void free_grid(char **array, int lengthArray)
  */
 char **new_argv(int argc, char *str)
 {
-	char *temp, token;
+	char *temp, *token;
 	char **array;
 	int length, i;
 
@@ -69,8 +68,6 @@ char **new_argv(int argc, char *str)
 	{
 		perror("ERROR");
 	}
-
-
 	if (str == NULL)
 	{
 		free(array);
