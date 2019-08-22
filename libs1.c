@@ -68,6 +68,27 @@ int new_argc(char *str)
 }
 
 /**
+ * free_grid - frees a 2 dimensional grid
+ * @grid: grid created. (array of pointers)
+ * @height: rows
+ *
+ * Return: void. Frees memory
+ */
+void free_grid(char **array, int lengthArray)
+{
+        int i;
+
+        i = 0;
+        while (i < lengthArray)
+        {
+                free(*(array + lengthArray));
+		i++;
+        }
+        free(array);
+
+}
+
+/**
  * new_argv - split a string and create an array of strs
  * @argc: counter of strs given
  * @str: string to be split
@@ -83,7 +104,6 @@ char **new_argv(int argc, char *str)
 	array = malloc(sizeof(char *) * argc);
 	if (array == NULL)
 	{
-		free(array);
 		perror("ERROR");
 	}
 
@@ -91,7 +111,7 @@ char **new_argv(int argc, char *str)
 	temp = malloc(sizeof(char) * (length + 1));
 	if (temp == NULL)
 	{
-		free(temp);
+		free(array);
 		perror("ERROR");
 	}
 
@@ -99,7 +119,6 @@ char **new_argv(int argc, char *str)
 	temp = strtok(temp, " ");
 	if (temp == NULL)
 	{
-		free(temp);
 		free(array);
 		perror("ERROR");
 	}
