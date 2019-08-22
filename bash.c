@@ -12,6 +12,7 @@ int main(void)
 	while (1)
 	{
 		printf("lmao~weed$ ");
+		fflush( stdin );
 		characters = getline(&buf, &buf_size, stdin);
 		if (characters  == -1)
 		{
@@ -23,13 +24,24 @@ int main(void)
 			buf = rm_enter(buf);
 			argv = new_argv(argc, buf);
 
-			printf("%s\n", buf);
-
-			pid = fork();
-			if (pid == 0)
+			if (argc != 0)
 			{
-				if (execve(argv[0], argv, NULL) == -1)
-					perror("ERROR");
+				if (_strcmp (buf, DELIM) < 0)
+				{
+					argv = NULL;
+					putchar(10);
+				}
+
+				pid = fork();
+				if (pid == 0)
+				{
+					if (execve(argv[0], argv, NULL) == -1)
+						perror("ERROR");
+				}
+				else
+				{
+					wait(NULL);
+				}
 			}
 		}
 	}

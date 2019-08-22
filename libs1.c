@@ -1,46 +1,9 @@
 #include "head.h"
-
-/**
- * _strlen - Count the maximum number of a array
- * @s: Input Array
- *
- * Return: counter
- */
-
-int _strlen(char *s)
-{
-	int cont;
-
-	cont = 0;
-	while (s[cont])
-		cont++;
-
-	return (cont);
-}
-
-/**
- * _strcpy - copy pointers
- * @dest: destination
- * @src: string to copy
- * Return: the pointer to dest
- */
-
-char *_strcpy(char *dest, char *src)
-{
-	int i;
-
-	for (i = 0; src[i] != 0; i++)
-		dest[i] = src[i];
-
-	dest[i] = '\0';
-	return (dest);
-}
-
 /**
  * strgs_count - Count the strings in str
  * @str: the string
  *
- * Return: the numbers of strings separate with " "
+ * Return: the numbers of strings separate with DELIM
  */
 
 int new_argc(char *str)
@@ -54,14 +17,14 @@ int new_argc(char *str)
 		perror("ERROR");
 
 	buf = _strcpy(buf, str);
-	buf = strtok(buf, " ");
+	buf = strtok(buf, DELIM);
 	if (buf == NULL)
 		perror("ERROR");
 
 	while (buf != NULL)
 	{
 		i++;
-		buf = strtok(NULL, " ");
+		buf = strtok(NULL, DELIM);
 	}
 	free(buf);
 	return (i);
@@ -116,7 +79,7 @@ char **new_argv(int argc, char *str)
 	}
 
 	temp = _strcpy(temp, str);
-	temp = strtok(temp, " ");
+	temp = strtok(temp, DELIM);
 	if (temp == NULL)
 	{
 		free(array);
@@ -130,7 +93,7 @@ char **new_argv(int argc, char *str)
 		array[i] = malloc(sizeof(char) * (length + 1));
 		array[i] = _strcpy(array[i], temp);
 		i++;
-		temp = strtok(NULL, " ");
+		temp = strtok(NULL, DELIM);
 	}
 	free(temp);
 	return (array);
