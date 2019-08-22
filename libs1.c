@@ -20,9 +20,10 @@ int new_argc(char *str)
 	buf = _strcpy(buf, str);
 	token = strtok(buf, DELIM);
 
-	while (token = strtok(NULL, DELIM))
+	while (token != NULL)
 	{
 		i++;
+		token = strtok(NULL, DELIM);
 	}
 	free(buf);
 	return (i);
@@ -85,11 +86,12 @@ char **new_argv(int argc, char *str)
 	temp = _strcpy(temp, str);
 	token = strtok(temp, DELIM);
 	i = 0;
-	while (token = strtok(NULL, DELIM))
+	while (token != NULL)
 	{
 		length = _strlen(token);
 		array[i] = malloc(sizeof(char) * (length + 1));
-		array[i] = _strcpy(array[i], temp);
+		array[i] = _strcpy(array[i], token);
+		token = strtok(NULL, DELIM);
 		i++;
 	}
 	free(temp);

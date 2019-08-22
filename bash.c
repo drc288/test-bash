@@ -26,13 +26,6 @@ int main(void)
 
 			if (argc != 0)
 			{
-				/*
-				if (_strcmp (buf, DELIM) < 0)
-				{
-					argv = NULL;
-				}
-				*/
-
 				pid = fork();
 				if (pid == 0)
 				{
