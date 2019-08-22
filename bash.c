@@ -7,7 +7,7 @@ int main(void)
 	pid_t pid;
 	char **argv;
 	int characters, argc;
-	size_t buf_size = 1024;
+	size_t buf_size = 0;
 
 	while (1)
 	{
@@ -26,11 +26,12 @@ int main(void)
 
 			if (argc != 0)
 			{
+				/*
 				if (_strcmp (buf, DELIM) < 0)
 				{
 					argv = NULL;
-					putchar(10);
 				}
+				*/
 
 				pid = fork();
 				if (pid == 0)

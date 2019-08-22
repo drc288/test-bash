@@ -1,4 +1,5 @@
 #include "head.h"
+
 /**
  * strgs_count - Count the strings in str
  * @str: the string
@@ -8,18 +9,16 @@
 
 int new_argc(char *str)
 {
-	char *buf;
+	char *buf, token;
 	int i = 0, ch;
 
 	ch = _strlen(str);
 	buf = malloc(ch + 1);
-	if (buf == NULL)
+	if (buf == NULL || str == NULL)
 		perror("ERROR");
 
 	buf = _strcpy(buf, str);
-	buf = strtok(buf, DELIM);
-	if (buf == NULL)
-		perror("ERROR");
+	token = strtok(buf, DELIM);
 
 	while (buf != NULL)
 	{
@@ -44,7 +43,7 @@ void free_grid(char **array, int lengthArray)
         i = 0;
         while (i < lengthArray)
         {
-		printf("%p", *(array + lengthArray));
+		printf("%p\n", *(array + lengthArray));
                 free(*(array + lengthArray));
 		i++;
         }
@@ -61,13 +60,20 @@ void free_grid(char **array, int lengthArray)
  */
 char **new_argv(int argc, char *str)
 {
-	char *temp;
+	char *temp, token;
 	char **array;
 	int length, i;
 
 	array = malloc(sizeof(char *) * argc);
 	if (array == NULL)
 	{
+		perror("ERROR");
+	}
+
+
+	if (str == NULL)
+	{
+		free(array);
 		perror("ERROR");
 	}
 
@@ -80,28 +86,21 @@ char **new_argv(int argc, char *str)
 	}
 
 	temp = _strcpy(temp, str);
-	temp = strtok(temp, DELIM);
-	if (temp == NULL)
-	{
-		free(array);
-		perror("ERROR");
-	}
-
+	token = strtok(temp, DELIM);
 	i = 0;
-	while (temp != NULL)
+	while (token = strtok(NULL, DELIM))
 	{
-		length = _strlen(temp);
+		length = _strlen(token);
 		array[i] = malloc(sizeof(char) * (length + 1));
 		array[i] = _strcpy(array[i], temp);
 		i++;
-		temp = strtok(NULL, DELIM);
 	}
 	free(temp);
 	return (array);
 }
 
 /**
- * first_string - remove the character '\n' in str
+ * rm_enter - remove the character '\n' in str
  * @str: string to edit
  *
  * Return: the string
