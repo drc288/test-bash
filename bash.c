@@ -19,7 +19,6 @@ int main(void)
 		}
 	else
 		{
-
 			argc = new_argc(buf);
 			buf = rm_enter(buf);
 			argv = new_argv(argc, buf);
@@ -33,7 +32,6 @@ int main(void)
 					perror("ERROR");
 			}
 		}
-		free_grid(argv, argc);
 	}
 	free(buf);
 	return (0);
