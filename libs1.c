@@ -1,4 +1,5 @@
 #include "head.h"
+
 /**
  * strgs_count - Count the strings in str
  * @str: the string
@@ -18,9 +19,6 @@ int new_argc(char *str)
 
 	buf = _strcpy(buf, str);
 	buf = strtok(buf, DELIM);
-	if (buf == NULL)
-		perror("ERROR");
-
 	while (buf != NULL)
 	{
 		i++;
@@ -81,11 +79,6 @@ char **new_argv(int argc, char *str)
 
 	temp = _strcpy(temp, str);
 	temp = strtok(temp, DELIM);
-	if (temp == NULL)
-	{
-		free(array);
-		perror("ERROR");
-	}
 
 	i = 0;
 	while (temp != NULL)
@@ -101,7 +94,7 @@ char **new_argv(int argc, char *str)
 }
 
 /**
- * first_string - remove the character '\n' in str
+ * rm_enter - remove the character '\n' in str
  * @str: string to edit
  *
  * Return: the string
