@@ -76,11 +76,7 @@ char **new_argv(int argc, char *str)
 		free(array);
 		perror("ERROR");
 	}
-<<<<<<< HEAD
 
-	temp = _strcpy(temp, str);
-	temp = strtok(temp, DELIM);
-=======
 	length = _strlen(str);
 	temp = malloc(sizeof(char) * (length + 1));
 	if (temp == NULL)
@@ -88,7 +84,6 @@ char **new_argv(int argc, char *str)
 		free(array);
 		perror("ERROR");
 	}
->>>>>>> db3d87d09637180f59e3c811c1e8e9dbb3d03ac9
 
 	temp = _strcpy(temp, str);
 	token = strtok(temp, DELIM);
