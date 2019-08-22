@@ -44,6 +44,7 @@ void free_grid(char **array, int lengthArray)
         i = 0;
         while (i < lengthArray)
         {
+		printf("%p", *(array + lengthArray));
                 free(*(array + lengthArray));
 		i++;
         }
