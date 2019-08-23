@@ -18,7 +18,7 @@ int main(void)
 		{
 			perror("ERROR");
 		}
-	else
+		else
 		{
 			argc = new_argc(buf);
 			buf = rm_enter(buf);
@@ -31,14 +31,19 @@ int main(void)
 				{
 					if (execve(argv[0], argv, NULL) == -1)
 						perror("ERROR");
+					free_grid(argv, argc);
+					free(argv);
+					free(buf);
 				}
 				else
 				{
+					free_grid(argv, argc);
+					free(argv);
+					free(buf);
 					wait(NULL);
 				}
 			}
 		}
 	}
-	free(buf);
 	return (0);
 }

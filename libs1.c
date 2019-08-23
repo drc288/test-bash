@@ -43,12 +43,9 @@ void free_grid(char **array, int lengthArray)
         i = 0;
         while (i < lengthArray)
         {
-		printf("%p\n", *(array + lengthArray));
-                free(*(array + lengthArray));
+                free(*(array + i));
 		i++;
         }
-        free(array);
-
 }
 
 /**
@@ -64,7 +61,8 @@ char **new_argv(int argc, char *str)
 	char **array;
 	int length, i;
 
-	array = malloc(sizeof(char *) * argc);
+	array = NULL;
+	array = malloc(sizeof(char *) * (argc + 1));
 	if (array == NULL)
 	{
 		perror("ERROR");
@@ -94,6 +92,7 @@ char **new_argv(int argc, char *str)
 		token = strtok(NULL, DELIM);
 		i++;
 	}
+	array[i] = NULL;
 	free(temp);
 	return (array);
 }
@@ -120,6 +119,7 @@ char *rm_enter(char *str)
 	for (i = 0; str[i] != 0; i++)
 		buf[i] = str[i];
 
+	free(str);
 	buf[i - 1] = '\0';
 	return (buf);
 }
