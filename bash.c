@@ -16,7 +16,8 @@ int main(void)
 		characters = getline(&buf, &buf_size, stdin);
 		if (characters  == -1)
 		{
-			perror("ERROR");
+			putchar(10);
+			exit(1);
 		}
 	else
 		{
