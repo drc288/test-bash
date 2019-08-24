@@ -6,13 +6,13 @@ int main(void)
 	char *buf = NULL;
 	pid_t pid;
 	char **argv;
-	int characters, argc;
+	int characters = 0, argc = 0;
 	size_t buf_size = 0;
 
 	while (1)
 	{
 		printf("lmao~weed$ ");
-		fflush( stdin );
+		fflush(stdin);
 		characters = getline(&buf, &buf_size, stdin);
 		if (characters  == -1)
 		{
@@ -27,6 +27,12 @@ int main(void)
 
 			if (argc != 0)
 			{
+				if ((argc == 1) && (_strcmp(argv[0], "exit") == 0))
+				{
+					fflush(stdin);
+					exit(1);
+				}
+
 				pid = fork();
 				if (pid == 0)
 				{
@@ -35,7 +41,7 @@ int main(void)
 				}
 				else
 				{
-					wait(NULL);
+					wait(pid);
 				}
 			}
 		}
