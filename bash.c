@@ -1,9 +1,9 @@
 #include "head.h"
 
-
 int main(void)
 {
 	char *buf = NULL;
+	char *str = NULL;
 	pid_t pid;
 	char **argv;
 	int characters, argc;
@@ -12,7 +12,7 @@ int main(void)
 	while (1)
 	{
 		printf("lmao~weed$ ");
-		fflush( stdin );
+		fflush(stdin);
 		characters = getline(&buf, &buf_size, stdin);
 		if (characters  == -1)
 		{
@@ -21,9 +21,9 @@ int main(void)
 		else
 		{
 			argc = new_argc(buf);
-			buf = rm_enter(buf);
-			argv = new_argv(argc, buf);
-
+			str = rm_enter(buf);
+			argv = new_argv(argc, str);
+			free(str);
 			if (argc != 0)
 			{
 				pid = fork();
@@ -32,18 +32,16 @@ int main(void)
 					if (execve(argv[0], argv, NULL) == -1)
 						perror("ERROR");
 					free_grid(argv, argc);
-					free(argv);
-					free(buf);
 				}
 				else
 				{
 					free_grid(argv, argc);
-					free(argv);
 					free(buf);
 					wait(NULL);
 				}
 			}
 		}
 	}
+	free(buf);
 	return (0);
 }
