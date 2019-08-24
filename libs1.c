@@ -12,6 +12,8 @@ int new_argc(char *str)
 	char *buf, *token;
 	int i = 0, ch;
 
+	buf = NULL;
+	token = NULL;
 	ch = _strlen(str);
 	buf = malloc(ch + 1);
 	if (buf == NULL || str == NULL)
@@ -46,6 +48,7 @@ void free_grid(char **array, int lengthArray)
                 free(*(array + i));
 		i++;
         }
+	free(array);
 }
 
 /**
@@ -119,7 +122,6 @@ char *rm_enter(char *str)
 	for (i = 0; str[i] != 0; i++)
 		buf[i] = str[i];
 
-	free(str);
 	buf[i - 1] = '\0';
 	return (buf);
 }
