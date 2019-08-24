@@ -1,9 +1,9 @@
 #include "head.h"
 
-
 int main(void)
 {
 	char *buf = NULL;
+	char *str = NULL;
 	pid_t pid;
 	char **argv;
 	int characters = 0, argc = 0;
@@ -19,12 +19,12 @@ int main(void)
 			putchar(10);
 			exit(1);
 		}
-	else
+		else
 		{
 			argc = new_argc(buf);
-			buf = rm_enter(buf);
-			argv = new_argv(argc, buf);
-
+			str = rm_enter(buf);
+			argv = new_argv(argc, str);
+			free(str);
 			if (argc != 0)
 			{
 				if ((argc == 1) && (_strcmp(argv[0], "exit") == 0))
@@ -38,10 +38,13 @@ int main(void)
 				{
 					if (execve(argv[0], argv, NULL) == -1)
 						perror("ERROR");
+					free_grid(argv, argc);
 				}
 				else
 				{
-					wait(pid);
+					free_grid(argv, argc);
+					free(buf);
+					wait(NULL);
 				}
 			}
 		}
