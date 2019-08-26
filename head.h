@@ -1,9 +1,12 @@
 #ifndef _HEAD_H_
 #define _HEAD_H_
+#include <sys/types.h>
+#include <sys/wait.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 #define DELIM " \t\r\n\a"
 
 int _strlen(char *s);

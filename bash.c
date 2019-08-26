@@ -5,18 +5,17 @@ int main(void)
 	char *buf = NULL;
 	char *str = NULL;
 	pid_t pid;
-	char **argv;
-	int characters = 0, argc = 0;
+	char **argv = NULL;
+	int argc = 0, characters = 0;
 	size_t buf_size = 0;
 
 	while (1)
 	{
-		printf("lmao~weed$ ");
+		printf("#cisfun$ ");
 		fflush(stdin);
 		characters = getline(&buf, &buf_size, stdin);
 		if (characters  == -1)
 		{
-			putchar(10);
 			exit(1);
 		}
 		else
@@ -37,14 +36,20 @@ int main(void)
 				if (pid == 0)
 				{
 					if (execve(argv[0], argv, NULL) == -1)
-						perror("ERROR");
+						perror("./shell");
+				/*		perror("./hsh: 1: %s: not found", errno); */
+					free(str);
 					free_grid(argv, argc);
 				}
 				else
 				{
+					wait(pid);
+					kill(pid, SIGKILL);
+					/*
 					free_grid(argv, argc);
 					free(buf);
-					wait(NULL);
+					wait(pid);
+					*/
 				}
 			}
 		}
