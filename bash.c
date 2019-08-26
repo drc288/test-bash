@@ -36,7 +36,6 @@ int main(void)
 				else
 				{
 					free_grid(argv, argc);
-					free(buf);
 					wait(NULL);
 				}
 			}
