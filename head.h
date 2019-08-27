@@ -16,5 +16,6 @@ char **new_argv(int, char *);
 void free_grid(char **, int);
 char *rm_enter(char *str);
 int _strcmp(char *s1, char *s2);
+void exec(char **, char *, int);
 
 #endif

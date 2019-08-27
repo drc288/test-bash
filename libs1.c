@@ -1,7 +1,7 @@
 #include "head.h"
 
 /**
- * strgs_count - Count the strings in str
+ * new_argc - Count the strings in str
  * @str: the string
  *
  * Return: the numbers of strings separate with DELIM
@@ -33,21 +33,21 @@ int new_argc(char *str)
 
 /**
  * free_grid - frees a 2 dimensional grid
- * @grid: grid created. (array of pointers)
- * @height: rows
+ * @array: grid created. (array of pointers)
+ * @lengthArray: rows
  *
  * Return: void. Frees memory
  */
 void free_grid(char **array, int lengthArray)
 {
-        int i;
+	int i;
 
-        i = 0;
-        while (i < lengthArray)
-        {
-                free(*(array + i));
+	i = 0;
+	while (i < lengthArray)
+	{
+		free(*(array + i));
 		i++;
-        }
+	}
 	free(array);
 }
 
@@ -97,6 +97,7 @@ char **new_argv(int argc, char *str)
 	}
 	array[i] = NULL;
 	free(temp);
+	free(token);
 	return (array);
 }
 
