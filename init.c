@@ -2,15 +2,14 @@
 
 /**
  * exec - execute the default options
- * argv: pointer to array.
- * buf: if error free
- *
- * Return: 1 to success.
+ * @argv: pointer to array.
+ * @buf: if error free
+ * @argc: worlds.
  */
 
 void exec(char **argv, char *buf, int argc)
 {
-	int i = 0;
+	int i = 0, status = 0;
 
 	if ((_strcmp(argv[0], "exit") == 0) && (argc == 1))
 	{
@@ -22,10 +21,11 @@ void exec(char **argv, char *buf, int argc)
 
 	if ((_strcmp(argv[0], "exit") == 0) && (argc == 2))
 	{
+		status = _atoi(argv[1]);
 		fflush(stdin);
 		free_grid(argv, argc);
 		free(buf);
-		exit(_atoi(argv[1]));
+		exit(status);
 	}
 
 	if (_strcmp(argv[0], "env") == 0 && (argc == 1))
