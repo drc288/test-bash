@@ -9,13 +9,24 @@
 #include <signal.h>
 #define DELIM " \t\r\n\a"
 
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-int new_argc(char *str);
+/* GET ENV */
+extern char **environ;
+
+/* FUNCTIONS STR */
+int _strlen(char *);
+void _puts(char *str);
+int _putchar(char c);
+char *_strcpy(char *, char *);
+char *rm_enter(char *);
+int _strcmp(char *s1, char *s2);
+int _atoi(char *);
+
+/* ARGC | ARGV | FREE | EXEC */
+int new_argc(char *);
 char **new_argv(int, char *);
 void free_grid(char **, int);
-char *rm_enter(char *str);
-int _strcmp(char *s1, char *s2);
 void exec(char **, char *, int);
+void str_def(char **, char*, int);
+void new_proccess(char **, char *, int);
 
 #endif

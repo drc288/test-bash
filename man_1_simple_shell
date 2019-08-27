@@ -21,4 +21,6 @@ user@localhost:~/$ ./shell
 #cisfun$
 .LP
 The command ./shell executes a new shell
-.SH FUNCTIONALITIES
+.SH FIELDS
+This part of the document describes the functionality of each file.
+

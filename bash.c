@@ -14,7 +14,7 @@ int main(void)
 	int argc = 0, characters = 0;
 	size_t buf_size = 0;
 
-	while (1)
+	while (EOF)
 	{
 		printf("#cisfun$ ");
 		fflush(stdin);
