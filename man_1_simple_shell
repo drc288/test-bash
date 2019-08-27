@@ -8,12 +8,17 @@ Simple shell \- Manual simple shell
 This document describes how to execute the ./shell file and its functionalities.
 .LP
 .BR Example
+.LP
+First we must compile our code with the following flags.
+.LP
+gcc -Wall -Werror -Wextra -pedantic *.c -o shell
+.LP
+and next execute the file shell.
+.LP
 .br
-.SAMPLE
 user@localhost:~/$ ./shell
 .br
 #cisfun$
-.ESAMPLE
 .LP
 The command ./shell executes a new shell
 .SH FUNCTIONALITIES

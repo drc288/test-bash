@@ -60,7 +60,8 @@ void free_grid(char **array, int lengthArray)
  */
 char **new_argv(int argc, char *str)
 {
-	char *temp, *token;
+	char *temp = NULL;
+	char *token = NULL;
 	char **array;
 	int length, i;
 
@@ -97,7 +98,6 @@ char **new_argv(int argc, char *str)
 	}
 	array[i] = NULL;
 	free(temp);
-	free(token);
 	return (array);
 }
 
