@@ -34,7 +34,6 @@ int main(void)
 			if (argc != 0)
 			{
 				argv[0] = add_path(argv[0], argv, argc, buf);
-				printf("%s\n", argv[0]);
 				exec(argv, buf, argc);
 			}
 		}
