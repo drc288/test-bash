@@ -11,7 +11,7 @@ int main(void)
 	char *buf = NULL;
 	char *str = NULL;
 	char **argv = NULL;
-	int argc = 0, characters = 0;
+	int argc = 0, characters = 0, count =1;
 	size_t buf_size = 0;
 
 	while (EOF)
@@ -34,8 +34,9 @@ int main(void)
 			if (argc != 0)
 			{
 				argv[0] = add_path(argv[0], argv, argc, buf);
-				exec(argv, buf, argc);
+				exec(argv, buf, argc, count);
 			}
+			count++;
 		}
 	}
 	free(buf);

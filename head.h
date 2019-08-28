@@ -20,15 +20,17 @@ char *_strcpy(char *, char *);
 char *rm_enter(char *);
 int _strcmp(char *, char *);
 int _atoi(char *);
+void print_number(int);
 
-/* ARGC | ARGV | FREE | EXEC */
+/* ARGC | ARGV | FREE | EXEC | ERROR */
 int new_argc(char *);
 char **new_argv(int, char *);
 void free_grid(char **, int);
-void exec(char **, char *, int);
+void exec(char **, char *, int, int);
 void str_def(char **, char*, int);
-void new_proccess(char **, char *, int);
+void new_proccess(char **, char *, int, int);
 char *add_path(char *,  char **, int, char *);
 char *_strcat(char *, char *);
+void sys_error(char **, int, char *);
 
 #endif
