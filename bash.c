@@ -30,10 +30,13 @@ int main(void)
 			argc = new_argc(buf);
 			str = rm_enter(buf);
 			argv = new_argv(argc, str);
-			argv[0] = add_path(argv[0], argv, argc, buf);
 
 			if (argc != 0)
+			{
+				argv[0] = add_path(argv[0], argv, argc, buf);
+				printf("%s\n", argv[0]);
 				exec(argv, buf, argc);
+			}
 		}
 	}
 	free(buf);
