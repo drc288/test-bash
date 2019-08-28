@@ -62,21 +62,18 @@ char **new_argv(int argc, char *str)
 {
 	char *temp = NULL;
 	char *token = NULL;
-	char **array;
-	int length, i;
+	char **array = NULL;
+	int length = 0, i = 0;
 
-	array = NULL;
 	array = malloc(sizeof(char *) * (argc + 1));
 	if (array == NULL)
-	{
 		perror("ERROR");
-	}
+
 	if (str == NULL)
 	{
 		free(array);
 		perror("ERROR");
 	}
-
 	length = _strlen(str);
 	temp = malloc(sizeof(char) * (length + 1));
 	if (temp == NULL)
@@ -84,10 +81,8 @@ char **new_argv(int argc, char *str)
 		free(array);
 		perror("ERROR");
 	}
-
 	temp = _strcpy(temp, str);
 	token = strtok(temp, DELIM);
-	i = 0;
 	while (token != NULL)
 	{
 		length = _strlen(token);
@@ -142,15 +137,15 @@ char *rm_enter(char *str)
  */
 char *_strcat(char *dest, char *src)
 {
-        int i, j;
+	int i, j;
 
-        for (i = 0; dest[i] != '\0'; i++)
-        {
-        }
-        for (j = 0; src[j] != '\0'; j++, i++)
-        {
-                dest[i] = src[j];
-        }
+	for (i = 0; dest[i] != '\0'; i++)
+	{
+	}
+	for (j = 0; src[j] != '\0'; j++, i++)
+	{
+		dest[i] = src[j];
+	}
 	dest[i] = '\0';
-        return (dest);
+	return (dest);
 }

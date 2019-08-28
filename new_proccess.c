@@ -7,7 +7,7 @@
  * @buf: if error free *
  */
 
-void new_proccess(char **argv, char *buf, int argc)
+void new_proccess(char **argv, char *buf, int argc, int count)
 {
 	pid_t pid;
 
@@ -16,7 +16,8 @@ void new_proccess(char **argv, char *buf, int argc)
 	{
 		if (execve(argv[0], argv, NULL) == -1)
 		{
-			perror("./shell");
+			sys_error(argv, count, "not found");
+			count--;
 		}
 
 		free_grid(argv, argc);

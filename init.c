@@ -7,7 +7,7 @@
  * @argc: worlds.
  */
 
-void exec(char **argv, char *buf, int argc)
+void exec(char **argv, char *buf, int argc, int count)
 {
 	int i = 0, status = 0;
 
@@ -21,6 +21,7 @@ void exec(char **argv, char *buf, int argc)
 
 	if ((_strcmp(argv[0], "exit") == 0) && (argc == 2))
 	{
+		if (argv[1])
 		status = _atoi(argv[1]);
 		fflush(stdin);
 		free_grid(argv, argc);
@@ -33,11 +34,12 @@ void exec(char **argv, char *buf, int argc)
 		while (environ[i] != NULL)
 		{
 			_puts(environ[i]);
+			_putchar(10);
 			i++;
 		}
 	}
 	else
-		new_proccess(argv, buf, argc);
+		new_proccess(argv, buf, argc, count);
 }
 
 /**
