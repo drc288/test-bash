@@ -28,7 +28,7 @@ char **new_argv(int, char *);
 void free_grid(char **, int);
 void exec(char **, char *, int, int);
 void str_def(char **, char*, int);
-void new_proccess(char **, char *, int);
+void new_proccess(char **, char *, int, int);
 char *split_path(char *, char *);
 char *check_access(char *, char *, char *, char *);
 char *add_path(char *,  char **, int, char *);
