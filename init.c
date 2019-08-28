@@ -28,9 +28,8 @@ void exec(char **argv, char *buf, int argc)
 		exit(status);
 	}
 
-	if (_strcmp(argv[0], "env") == 0 && (argc == 1))
+	if ((_strcmp(argv[0], "/usr/bin/env") == 0) && (argc == 1))
 	{
-		free(buf);
 		while (environ[i] != NULL)
 		{
 			_puts(environ[i]);
